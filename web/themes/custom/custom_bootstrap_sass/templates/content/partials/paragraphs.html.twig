@@ -1,0 +1,14 @@
+{% if node.field_content %}
+  {% for paragraph in node.field_content %}
+    {% set paragraphType = paragraph.entity.type.value.0.target_id %}
+
+    {% if paragraph.entity.field_hidden.value == '1' %}
+
+    {% else %}
+      {% if paragraphType == 'text' %}
+        {% include directory ~ '/templates/content/partials/paragraphs/text.html.twig' %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
